@@ -2,41 +2,59 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var queryString = require('querystring');
-/*http.createServer(function (request, response){
 
-                    //view역할             ,  controller역할
-    fs.readFile('./html/test_res.html', function(err, data){
+
+//Example(2) text_html보여주기
+http.createServer(function(request, response){
+    fs.readFile('./html/test_res.html', function(error, data){
         if(error){
-            console.log(error.message);
-        }else{
+            console.log(error.message);}
+        else{
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end(data);
-        }
+        }    
     });
-}).listen(1234, '127.0.0.1');
-
-
-http.createServer(function (request, response){
-
-    //view역할             ,  controller역할
-    fs.readFile('./img/sw.jpeg', function(err, data){
-        if(error){
-        console.log(error.message);
-        }
-        else{
-            response.writeHead(302, {'Location': 'http://cs.dongduck.sc.kr'});
-            response.end();       
-            //response.writeHead(200, {'Content-Type': 'image/jpeg'});
-        //response.end(data);
-        }         
-    });
-}).listen(1234, '127.0.0.1');
+}).listen(1234,'127.0.0.1');
     console.log('Server running at http://127.0.0.1:1234');
-    
 
+
+/*
+//Example(3) 이미지 파일 보여주기 
+http.createServer(function(request, response){
+    fs.readFile('./img/kaka.png', function(error, data){
+        if(error){
+                console.log(error.message);} else{
+                    response.writeHead(200,{'Content-Type': 'image/png'});
+                    response.end(data);
+                }
+
+            });
+
+    }).listen(1234,'127.0.0.1');
+        console.log('Server running at http://127.0.0.1:1234');
 */
 
-/*//사용자의 요청 정보는 request에 담겨 있다.
+/*
+//Example(4) 이미지 파일 보여주기 -> 페이지 옮기기 
+http.createServer(function(request, response){
+    fs.readFile('./img/kaka.png', function(error, data){
+        if(error){
+                console.log(error.message);} else{
+                    response.writeHead(302, {'Location':'https://cs.dongduk.ac.kr'})
+                    response.end();
+                }
+
+            });
+
+    }).listen(1234,'127.0.0.1');
+        console.log('Server running at http://127.0.0.1:1234');
+*/
+
+/*
+
+//Example(5) 페이지 옮기기
+
+//사용자의 요청 정보는 request에 담겨 있다.
     http.createServer(function (request, response){
 
                         //url 모듈안에 parse기능이 포함되어 있다.    pathname  : 폴더 이름    
@@ -77,9 +95,12 @@ http.createServer(function(request, response){
     console.log('Server running at http://127.0.0.1:1234');
 
 
+
 });*/
 
 
+/*
+//Example(6) login후 실패, 성공 처리 
 http.createServer(function(request, response){
 
     if(request.method == 'GET'){
@@ -120,3 +141,5 @@ http.createServer(function(request, response){
     }).listen(1234, function(){
     console.log('Server running at http://127.0.0.1:1234');
 });
+
+*/
